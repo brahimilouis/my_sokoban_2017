@@ -15,20 +15,22 @@ int main(int ac, char **av)
 	int len;
 	st_sokoban st;
 
-	if (ac != 2)
-		return (84);
-	if (av[1][0] == '-' && av[1][1] == 'h') {
+	st.map_win = 0;
+	st.nb_map = 3;
+	if (ac > 1 && av[1][0] == '-' && av[1][1] == 'h') {
 		display_h(&st);
 		return (0);
-	} else if (-1 == (file = open(av[1], O_RDONLY)))
-		return (84);
+	}
 	st.reset_map = 1;
-	while (st.reset_map == 1)
-		my_sokoban(av[1], &st);
+	while (st.reset_map == 1 || st.nb_map > st.map_win) {
+		choice_map(&st);
+		if (st.win != -1 && st.reset_map != 1)
+			st.map_win++;
+	}
 	if (st.error_map == 1)
 		return (84);
-	else if (st.win == -1) {
+	else if (st.win == -1)
 		return (1);
-	} else
+	else
 		return (0);
 }

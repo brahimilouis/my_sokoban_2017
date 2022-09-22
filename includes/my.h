@@ -32,8 +32,11 @@ typedef struct st_sokoban {
 	int error_map;
 	int error_joueur;
 	int verif;
+	int nb_map;
+	int map_win;
 } st_sokoban;
 
+void choice_map(st_sokoban *st);
 int verif_inside_map(st_sokoban *st, int verif);
 char **malloc_map(char **map, char *str, st_sokoban *st);
 char **array(char **map, char *str);

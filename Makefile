@@ -23,6 +23,7 @@ SRCS	=	src/main.c	\
 		src/malloc_map.c	\
 		src/array.c	\
 		src/verif_inside_map.c	\
+		src/choice_map.c
 
 OBJS	=	$(SRCS:.c=.o)
 

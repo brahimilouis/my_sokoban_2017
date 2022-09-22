@@ -22,6 +22,8 @@ void my_sokoban(char *str, st_sokoban *st)
 			prepare_deplacement(st);
 		if (st->touche == ' ' || st->nb_win == st->win || st->win == -1)
 			endwin();
+		if (st->touche == 'a')
+			st->map_win++;
 	}
 	endwin();
 	if (st->touche == ' ')
